@@ -2,6 +2,7 @@ package com.jas.myweb;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +13,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class AccumulateServlet
  */
-@WebServlet("/AccumulateServlet")
+@WebServlet("/Accumulate")
 public class AccumulateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,8 +31,21 @@ public class AccumulateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		HttpSession session = request.getSession();
-		Integer total = (Integer) session.getAttribute("total");
+//		HttpSession session = request.getSession();
+//		Integer total = (Integer) session.getAttribute("total");
+//		if (total == null) {
+//		total = 0;
+//		}
+//		String number = request.getParameter("number");
+//		if (number != null) {
+//		total += Integer.parseInt(number);
+//		}
+//		session.setAttribute("total", total);
+//		request.getRequestDispatcher("/Accumulate.jsp").forward(request, response);
+		
+		
+		ServletContext context = request.getServletContext();
+		Integer total = (Integer) context.getAttribute("total");
 		if (total == null) {
 		total = 0;
 		}
@@ -39,7 +53,7 @@ public class AccumulateServlet extends HttpServlet {
 		if (number != null) {
 		total += Integer.parseInt(number);
 		}
-		session.setAttribute("total", total);
+		context.setAttribute("total", total);
 		request.getRequestDispatcher("/Accumulate.jsp").forward(request, response);
 
 	}

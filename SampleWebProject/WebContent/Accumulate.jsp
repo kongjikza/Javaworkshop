@@ -7,9 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% int total = (Integer) session.getAttribute("total"); %>
+<%-- <% int total = (Integer) session.getAttribute("total"); %> --%>
 
+<%-- Total is <%= total %> --%>
+<% int total = (Integer) application.getAttribute("total"); %>
 Total is <%= total %>
-
 </body>
 </html>
